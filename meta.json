@@ -1,0 +1,20 @@
+{
+  "prompts": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "label": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "label": "Project description",
+      "default": "A Vue.js project"
+    },
+    "author": {
+      "type": "string",
+      "label": "Author"
+    }
+  },
+  "completeMessage": "To get started:\n\n{{^inPlace}}  cd {{destDirName}}\n{{/inPlace}}  yarn\n  yarn dev"
+}

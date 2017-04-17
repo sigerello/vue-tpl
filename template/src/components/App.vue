@@ -22,5 +22,8 @@
     h1 {
       font-weight: normal;
     }
+    img {
+      width: 100px;
+    }
   }
 </style>

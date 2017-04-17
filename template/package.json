@@ -1,9 +1,8 @@
 {
   "name": "{{ name }}",
   "description": "{{ description }}",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "{{ author }}",
-  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.coffee --progress --open --hot",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.coffee --progress --hide-modules"
@@ -17,8 +16,8 @@
     "babel-preset-latest": "^6.24.1",
     "chunk-manifest-webpack-plugin": "^1.0.0",
     "clean-webpack-plugin": "^0.1.16",
-    "coffee-loader": "^0.7.3",
-    "coffee-script": "^1.12.5",
+    "coffee-loader": "https://github.com/webpack-contrib/coffee-loader.git",
+    "coffeescript": "2.0.0-beta1",
     "cross-env": "^4.0.0",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",

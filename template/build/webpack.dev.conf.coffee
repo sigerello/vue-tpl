@@ -2,7 +2,7 @@
 path = require "path"
 webpack = require "webpack"
 merge = require "webpack-merge"
-autoprefixer = require "autoprefixer"
+# autoprefixer = require "autoprefixer"
 
 configBase = require "./webpack.base.conf.coffee"
 
@@ -14,11 +14,11 @@ rulesCSS = [
   loader: "css-loader"
 ,
   loader: "postcss-loader"
-  options:
-    plugins: -> [
-      autoprefixer
-        browsers: ["last 3 versions"]
-    ]
+  # options:
+  #   plugins: -> [
+  #     autoprefixer
+  #       browsers: ["last 3 versions"]
+  #   ]
 ,
   loader: "sass-loader"
 ]

@@ -2,7 +2,7 @@
 path = require "path"
 webpack = require "webpack"
 merge = require "webpack-merge"
-autoprefixer = require "autoprefixer"
+# autoprefixer = require "autoprefixer"
 
 CleanWebpackPlugin = require "clean-webpack-plugin"
 WebpackChunkHash = require "webpack-chunk-hash"
@@ -21,11 +21,11 @@ rulesCSS = [
       removeAll: true
 ,
   loader: "postcss-loader"
-  options:
-    plugins: -> [
-      autoprefixer
-        browsers: ["last 3 versions"]
-    ]
+  # options:
+  #   plugins: -> [
+  #     autoprefixer
+  #       browsers: ["last 3 versions"]
+  #   ]
 ,
   loader: "sass-loader"
   options:

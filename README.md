@@ -1,28 +1,52 @@
 # vue-tpl
 
-This is opinionated project template for [vue-cli](https://github.com/vuejs/vue-cli).
+This is simple but opinionated project template for developing [vuejs](https://vuejs.org/) projects.
 
-This template uses [yarn](https://yarnpkg.com/), [webpack](https://webpack.js.org/), [vuejs](https://vuejs.org/), [vue-loader](http://vue-loader.vuejs.org/en/), [coffeescript](http://coffeescript.org/v2/), [scss](http://sass-lang.com/), [pug](https://pugjs.org/).
+This template uses:
+
+- [yarn](https://yarnpkg.com/)
+- [webpack](https://webpack.js.org/)
+- [coffeescript](http://coffeescript.org/v2/)
+- [scss](http://sass-lang.com/)
+- [pug](https://pugjs.org/)
+- [bootstrap](https://v4-alpha.getbootstrap.com/)
 
 
-### Getting started
+### How to use
 
-First, install [yarn](https://yarnpkg.com/en/docs/install) pachage manager.
+First, install [yarn](https://yarnpkg.com/en/docs/install) package manager.
 
 Then run these commands to generate a project:
 
 ```bash
-$ npm install vue-cli -g
-$ vue init sigerello/vue-tpl my-project
-$ cd my-project
-$ yarn
-$ yarn dev
+npm install vue-cli -g
+vue init sigerello/vue-tpl my-project
+cd my-project
+yarn
 ```
 
-### Commands
+Create ```.env.dev``` and ```.env.prod``` files and set appropriate environments variables there:
 
-- `yarn dev`: starts dev-server with module hot-reloading.
+```bash
+cp .env.example .env.dev
+cp .env.example .env.prod
+```
 
-- `yarn build`: generates production build with minified HTML/CSS/JS in `dist` directory.
+Run dev-server:
 
-For detailed explanation on how things work, consult the docs for [webpack](https://webpack.js.org/), [vue-loader](http://vuejs.github.io/vue-loader) and other loaders and components.
+```bash
+yarn dev
+```
+
+Generate production build:
+
+```bash
+yarn prod:build
+```
+
+Run websever on production build:
+
+```bash
+yarn prod:server
+```
+

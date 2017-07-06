@@ -1,29 +1,23 @@
 <template lang="pug">
   #app
-    img(src="../assets/logo.png")
-    h1 \{{ msg }}
-    counter
+    navbar
+    router-view
+    footerbar
 </template>
 
 <script lang="coffee">
-  import Counter from "./Counter.vue"
+  import Navbar from "components/Navbar"
+  import Footer from "components/Footer"
 
   export default {
     components:
-      Counter: Counter
-    data: ->
-      msg: "{{ name }}"
+      navbar: Navbar
+      footerbar: Footer
   }
 </script>
 
 <style lang="scss">
   #app {
-    text-align: center;
-    h1 {
-      font-weight: normal;
-    }
-    img {
-      width: 100px;
-    }
+    height: 100%;
   }
 </style>

@@ -16,5 +16,5 @@
       "label": "Author"
     }
   },
-  "completeMessage": "To get started:\n\n{{^inPlace}}  cd {{destDirName}}\n{{/inPlace}}  yarn\n  yarn dev"
+  "completeMessage": "To get started:\n\n{{^inPlace}}  cd {{destDirName}}\n{{/inPlace}}  yarn\n  cp .env.example .env.dev\n  cp .env.example .env.prod\n  yarn dev"
 }

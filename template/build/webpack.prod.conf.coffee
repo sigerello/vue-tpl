@@ -2,12 +2,16 @@
 path = require "path"
 webpack = require "webpack"
 merge = require "webpack-merge"
-# autoprefixer = require "autoprefixer"
 
 CleanWebpackPlugin = require "clean-webpack-plugin"
 WebpackChunkHash = require "webpack-chunk-hash"
 ChunkManifestPlugin = require "chunk-manifest-webpack-plugin"
 ExtractTextPlugin = require "extract-text-webpack-plugin"
+# CopyWebpackPlugin = require "copy-webpack-plugin"
+DotenvPlugin = require "dotenv-webpack"
+
+pathEnv = path.resolve(__dirname, "../.env.prod")
+require("dotenv").config path: pathEnv
 
 configBase = require "./webpack.base.conf.coffee"
 
@@ -21,32 +25,30 @@ rulesCSS = [
       removeAll: true
 ,
   loader: "postcss-loader"
-  # options:
-  #   plugins: -> [
-  #     autoprefixer
-  #       browsers: ["last 3 versions"]
-  #   ]
 ,
   loader: "sass-loader"
   options:
     outputStyle: "compressed"
+    includePaths: [path.resolve(__dirname, "../src/styles")]
 ]
 
 config = merge configBase,
   entry:
     vendor: [
-      "./vendor.scss"
-      "lodash"
+      "./styles/vendor.scss"
+      "babel-polyfill"
       "vue"
       "vue-router"
+      "bootstrap/js/src/button"
+      "bootstrap/js/src/collapse"
     ]
     app: [
-      "./app.scss"
+      "./styles/app.scss"
       "./app.coffee"
     ]
   output:
-    path: path.resolve(__dirname, "../dist/public")
-    publicPath: ""
+    path: path.resolve(__dirname, "../dist")
+    publicPath: "/"
     filename: filenameJS
     chunkFilename: filenameJS
   module: rules: [
@@ -55,15 +57,22 @@ config = merge configBase,
     options:
       loaders:
         "scss": ExtractTextPlugin.extract(use: rulesCSS)
+        "coffee": "babel-loader!coffee-loader"
   ,
     test: /\.scss$/
     use: ExtractTextPlugin.extract(use: rulesCSS)
   ]
   plugins: [
-    new CleanWebpackPlugin ["dist/public"],
+    new CleanWebpackPlugin ["dist"],
       root: path.resolve(__dirname, "..")
       verbose: true
-    new webpack.EnvironmentPlugin(["NODE_ENV"])
+    # new CopyWebpackPlugin [
+    #   from: "mocks"
+    #   to: "mocks"
+    # ]
+    new DotenvPlugin path: pathEnv
+    # new webpack.EnvironmentPlugin(["NODE_ENV"])
+    new webpack.optimize.ModuleConcatenationPlugin
     new webpack.optimize.UglifyJsPlugin
       compress: warnings: false
       comments: false

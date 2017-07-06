@@ -1,5 +1,10 @@
 {
   "presets": [
-    ["latest", { "modules": false }]
+    ["env", {
+      "modules": false,
+      "targets": {
+        "uglify": true
+      }
+    }]
   ]
 }

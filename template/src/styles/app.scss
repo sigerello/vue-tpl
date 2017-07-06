@@ -1,0 +1,29 @@
+
+@import "variables";
+
+html {
+  position: relative;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  padding-top: 5rem; //needed for fixed navbar
+  padding-bottom: 5rem; //needed for sticky footer
+}
+
+footer {
+  height: 5rem;
+  background-color: #f7f7f7;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+a, button {
+  cursor: pointer;
+}

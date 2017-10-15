@@ -9,7 +9,7 @@ import Page     from "components/Page"
 import Counter  from "components/Counter"
 import NotFound from "components/NotFound"
 
-export default new VueRouter
+router = new VueRouter
   mode: "history"
   linkActiveClass: "active"
   linkExactActiveClass: "exact-active"
@@ -30,3 +30,5 @@ export default new VueRouter
     { name: "counter",   path: "/counter", component: Counter }
     { name: "not-found", path: "*",        component: NotFound }
   ]
+
+export default router

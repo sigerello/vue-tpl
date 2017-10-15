@@ -17,6 +17,7 @@ config =
       directives: path.resolve(__dirname, "../src/directives")
       utils: path.resolve(__dirname, "../src/utils")
       assets: path.resolve(__dirname, "../src/assets")
+      store: path.resolve(__dirname, "../src/store")
   module: rules: [
     test: /\.js$/
     loader: "babel-loader"
@@ -47,7 +48,11 @@ config =
     new webpack.ProvidePlugin
       $: "jquery"
       jQuery: "jquery"
-      Tether: "tether"
+      "window.jQuery": "jquery"
+      Popper: ["popper.js", "default"]
+      Util: "exports-loader?Util!bootstrap/js/src/util"
+      Collapse: "exports-loader?Collapse!bootstrap/js/src/collapse"
+      Modal: "exports-loader?Modal!bootstrap/js/src/modal"
     new HtmlWebpackPlugin
       template: "./index.pug"
       filename: "./index.html"

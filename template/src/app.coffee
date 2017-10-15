@@ -1,7 +1,9 @@
 
 import "babel-polyfill"
-import "bootstrap/js/src/button"
+
+import "bootstrap/js/src/util"
 import "bootstrap/js/src/collapse"
+import "bootstrap/js/src/modal"
 
 import Vue    from "vue"
 import router from "utils/router"

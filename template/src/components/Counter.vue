@@ -1,10 +1,10 @@
 <template lang="pug">
-  .container
-    #counter
+  #counter
+    .container
       h1 Counter
-      button.btn.btn-secondary(@click="down") -
+      button.btn.btn-outline-secondary(@click="down") -
       .number \{{ count }}
-      button.btn.btn-secondary(@click="up") +
+      button.btn.btn-outline-secondary(@click="up") +
 </template>
 
 <script lang="coffee">
@@ -20,7 +20,16 @@
 </script>
 
 <style lang="scss">
+  @import "variables";
+  @import "~bootstrap/scss/mixins/breakpoints";
+
   #counter {
+    @include media-breakpoint-up(md) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
     button:focus {
       box-shadow: none;
     }

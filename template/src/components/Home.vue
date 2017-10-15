@@ -7,10 +7,10 @@
         | Lorem ipsum dolor sit amet, consectetur adipisicing elit<br>
         | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
       .links
-        router-link(:to="'/page1'") Page 1
-        router-link(:to="'/page2'") Page 2
-        router-link(:to="'/counter'") Counter
-        router-link(:to="'/page3'") Broken Link
+        router-link(to="/page1") Page 1
+        router-link(to="/page2") Page 2
+        router-link(to="/counter") Counter
+        router-link(to="/page3") Broken Link
 </template>
 
 <script lang="coffee">

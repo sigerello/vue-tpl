@@ -1,13 +1,14 @@
 
 path = require "path"
+pathEnv = path.resolve(__dirname, "../.env.dev")
+require("dotenv").config path: pathEnv
+
 webpack = require "webpack"
 merge = require "webpack-merge"
 DotenvPlugin = require "dotenv-webpack"
 
-pathEnv = path.resolve(__dirname, "../.env.dev")
-require("dotenv").config path: pathEnv
 
-configBase = require "./webpack.base.conf.coffee"
+configBase = require "./webpack.base.conf"
 
 filenameJS = "[name].js"
 
@@ -46,10 +47,11 @@ config = merge configBase,
     use: rulesCSS
   ]
   devServer:
-    host: process.env.HOST
+    host: process.env.WEB_HOST
     port: process.env.PORT
     disableHostCheck: true
-    historyApiFallback: true
+    historyApiFallback:
+      disableDotRule: true
     noInfo: true
     contentBase: path.resolve(__dirname, "../src")
   performance:

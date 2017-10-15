@@ -1,8 +1,10 @@
 
 path = require "path"
+pathEnv = path.resolve(__dirname, "../.env.prod")
+require("dotenv").config path: pathEnv
+
 webpack = require "webpack"
 merge = require "webpack-merge"
-
 CleanWebpackPlugin = require "clean-webpack-plugin"
 WebpackChunkHash = require "webpack-chunk-hash"
 ChunkManifestPlugin = require "chunk-manifest-webpack-plugin"
@@ -10,10 +12,7 @@ ExtractTextPlugin = require "extract-text-webpack-plugin"
 # CopyWebpackPlugin = require "copy-webpack-plugin"
 DotenvPlugin = require "dotenv-webpack"
 
-pathEnv = path.resolve(__dirname, "../.env.prod")
-require("dotenv").config path: pathEnv
-
-configBase = require "./webpack.base.conf.coffee"
+configBase = require "./webpack.base.conf"
 
 filenameJS = "[name]-[chunkhash:16].js"
 filenameCSS = "[name]-[contenthash:16].css"
@@ -39,8 +38,10 @@ config = merge configBase,
       "babel-polyfill"
       "vue"
       "vue-router"
-      "bootstrap/js/src/button"
+
+      "bootstrap/js/src/util"
       "bootstrap/js/src/collapse"
+      "bootstrap/js/src/modal"
     ]
     app: [
       "./styles/app.scss"
@@ -71,14 +72,13 @@ config = merge configBase,
     #   to: "mocks"
     # ]
     new DotenvPlugin path: pathEnv
-    # new webpack.EnvironmentPlugin(["NODE_ENV"])
-    new webpack.optimize.ModuleConcatenationPlugin
+    new webpack.LoaderOptionsPlugin
+      minimize: true
+    new ExtractTextPlugin(filenameCSS)
+    new webpack.optimize.ModuleConcatenationPlugin()
     new webpack.optimize.UglifyJsPlugin
       compress: warnings: false
       comments: false
-    new ExtractTextPlugin(filenameCSS)
-    new webpack.LoaderOptionsPlugin
-      minimize: true
     new webpack.optimize.CommonsChunkPlugin
       name: ["vendor", "manifest"]
       minChunks: Infinity
@@ -87,6 +87,7 @@ config = merge configBase,
     new ChunkManifestPlugin
       filename: "chunk-manifest.json"
       manifestVariable: "webpackManifest"
+      inlineManifest: false
   ]
 
 module.exports = config

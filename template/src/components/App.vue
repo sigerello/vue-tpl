@@ -6,13 +6,14 @@
 </template>
 
 <script lang="coffee">
-  import Navbar from "components/Navbar"
-  import Footer from "components/Footer"
+  import Navbar    from "components/Navbar"
+  import Footerbar from "components/Footerbar"
 
   export default {
-    components:
-      navbar: Navbar
-      footerbar: Footer
+    components: {
+      Navbar
+      Footerbar
+    }
   }
 </script>
 

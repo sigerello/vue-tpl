@@ -32,6 +32,12 @@ cp .env.example .env.dev
 cp .env.example .env.prod
 ```
 
+Install all packages with dependensies:
+
+```bash
+yarn install
+```
+
 Run dev-server:
 
 ```bash

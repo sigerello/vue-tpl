@@ -11,7 +11,6 @@ This template uses:
 - [pug](https://pugjs.org/)
 - [bootstrap](https://v4-alpha.getbootstrap.com/)
 
-
 ### How to use
 
 First, install [yarn](https://yarnpkg.com/en/docs/install) package manager.
@@ -19,7 +18,7 @@ First, install [yarn](https://yarnpkg.com/en/docs/install) package manager.
 Then run these commands to generate a project:
 
 ```bash
-npm install vue-cli -g
+yarn global add vue-cli
 vue init sigerello/vue-tpl my-project
 cd my-project
 yarn
@@ -32,7 +31,7 @@ cp .env.example .env.dev
 cp .env.example .env.prod
 ```
 
-Install all packages with dependensies:
+Install dependencies:
 
 ```bash
 yarn install
@@ -55,4 +54,3 @@ Run websever on production build:
 ```bash
 yarn prod:server
 ```
-
